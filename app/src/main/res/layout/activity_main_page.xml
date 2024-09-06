@@ -27,7 +27,7 @@
         />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/Cam_btn"
         android:layout_width="190dp"
         android:layout_height="190dp"
         android:scaleType="fitCenter"
