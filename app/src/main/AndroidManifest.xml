@@ -19,8 +19,17 @@
             android:name=".MainPage"
             android:exported="false" />
         <activity
-            android:name=".Loading"
-            android:exported="false" />
+        android:name=".Loading"
+        android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 
 </manifest>
