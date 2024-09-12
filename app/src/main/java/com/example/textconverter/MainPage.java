@@ -17,8 +17,17 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
+//Side bar imports
+import android.os.Bundle;
+import android.view.MenuItem;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
 public class MainPage extends AppCompatActivity {
-
+    private DrawerLayout drawerLayout;
     private static final int IMAGE_PICKER_REQUEST_CODE = 1001;
 
     ImageButton Cam_btn;
@@ -44,6 +53,33 @@ public class MainPage extends AppCompatActivity {
                         .start(IMAGE_PICKER_REQUEST_CODE); // Pass the request code here
             }
         });
+
+        //////////////////////////////Side bar Control/////////////////////////////////////
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        ImageButton hamburgerButton = findViewById(R.id.hamburgerSidebar);
+        hamburgerButton.setOnClickListener(v -> {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                if (id == R.id.history) {
+                    // Nexproblem here
+                    Toast.makeText(MainPage.this, "History Clicked", Toast.LENGTH_SHORT).show();
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -61,5 +97,19 @@ public class MainPage extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Image is not selected", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
+
+
