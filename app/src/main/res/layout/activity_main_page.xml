@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteY="3dp">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/Label_textConverter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#B6C9FF"
@@ -39,7 +39,7 @@
             tools:ignore="RtlCompat" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/Click_to_Scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
@@ -51,7 +51,7 @@
             app:layout_constraintBottom_toTopOf="@+id/Cam_btn"
             app:layout_constraintEnd_toEndOf="@+id/Cam_btn"
             app:layout_constraintStart_toStartOf="@+id/Cam_btn"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/Label_textConverter"
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
@@ -63,7 +63,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/Label_textConverter"
             app:srcCompat="@android:drawable/ic_menu_camera" />
 
         <ImageButton
@@ -72,17 +72,23 @@
             android:layout_height="0dp"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="@+id/Label_textConverter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.02"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/Label_textConverter"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.50"
             app:srcCompat="@drawable/baseline_dehaze_24" />
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/mainfrag_layout"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
+
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

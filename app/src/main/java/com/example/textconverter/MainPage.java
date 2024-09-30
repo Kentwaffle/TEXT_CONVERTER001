@@ -17,7 +17,7 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
-//Side bar imports
+///////////////////////////Side bar imports///////////////
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
@@ -26,8 +26,13 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
+
+
 public class MainPage extends AppCompatActivity {
     private DrawerLayout drawerLayout;
+    private ImageButton hamburgerButton;
+
+
     private static final int IMAGE_PICKER_REQUEST_CODE = 1001;
 
     ImageButton Cam_btn;
@@ -54,11 +59,14 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
-        //////////////////////////////Side bar Control/////////////////////////////////////
-        drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        //////////////////////////////Side bar Control/////////////////////////////////////3
 
-        ImageButton hamburgerButton = findViewById(R.id.hamburgerSidebar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        hamburgerButton = findViewById(R.id.hamburgerSidebar);
+//        drawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open_nav,R.string.close_nav);
+//        drawerLayout.addDrawerListener(drawerToggle);
+//        drawerToggle.syncState();
+
         hamburgerButton.setOnClickListener(v -> {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -67,15 +75,22 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
-                if (id == R.id.history) {
-                    // Nexproblem here
-                    Toast.makeText(MainPage.this, "History Clicked", Toast.LENGTH_SHORT).show();
+                if (id == R.id.home) {
+//                    Intent intent = new Intent(MainPage.this, MainPage.class);
+//                    startActivity(intent);
+                    Toast.makeText(MainPage.this, "Home", Toast.LENGTH_SHORT).show();
+                } else if (id == R.id.history) {
+                    Intent intent = new Intent(MainPage.this, HistoryActivity.class);
+                    startActivity(intent);
                 }
+
+                DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
@@ -99,8 +114,6 @@ public class MainPage extends AppCompatActivity {
         }
 
     }
-
-
 
     @Override
     public void onBackPressed() {
